@@ -1,18 +1,18 @@
       /* Magic Mirror
     * Module: MMM-Cocktails
     *
-    * By Mykle1
+    * By Mykle1 ~ Edited by Cowboysdude
     * 
     */
    Module.register("MMM-Cocktails", {
 
        // Module config defaults.
        defaults: {
-           updateInterval: 10 * 60 * 1000, // every ten minutes
+           updateInterval: 15 * 1000, // every ten minutes
            fadeSpeed: 3000,
            initialLoadDelay: 1250, // ms seconds delay
            retryDelay: 2500,
-           maxWidth: "100%",
+           maxWidth: "900px",
            
        },
 	   
@@ -28,14 +28,12 @@
            this.Cocktails = [];
            this.url = "http://www.thecocktaildb.com/api/json/v1/1/random.php";
            this.scheduleUpdate();
-           //this.strIngredient = {};
        },
 
        getDom: function() {
 
-var cocktails = this.cocktails;
-
-
+         var cocktails = this.cocktails; 
+ 
            var wrapper = document.createElement("div");
            wrapper.className = "wrapper";
            wrapper.style.maxWidth = this.config.maxWidth;
@@ -52,35 +50,31 @@ var cocktails = this.cocktails;
            top.classList.add("post-container");
            
            var title = document.createElement("div");
-           title.classList.add("post-title");
-           if (cocktails.strGlass === 'vote' || " ") {
-               title.innerHTML = cocktails.strDrink + "<br> ";
-           } else {
-               title.innerHTML = cocktails.strDrink + "  ~  " + cocktails.strGlass +"<br>";
-           }
+           title.classList.add("post-title"); 
+           title.innerHTML = "Drink: "+cocktails.recipeName + "  <br> Glass: " + cocktails.glass + "  <br> Category: " + cocktails.category+"<br>"; 
            top.appendChild(title);
 
            var drinkLogo = document.createElement("div");
-           var drinkIcon = document.createElement("img");
-//         drinkIcon.src = "http://"+cocktails.strDrinkThumb; // original source
-           drinkIcon.src = cocktails.strDrinkThumb; // fixed 6/13/18 for @hykgoml
+           var drinkIcon = document.createElement("img"); 
+           drinkIcon.src = cocktails.thumb;
            drinkIcon.classList.add("post-thumb");
            drinkLogo.appendChild(drinkIcon);
            top.appendChild(drinkLogo);
 
            var des = document.createElement("p");
-           des.classList.add("xsmall", "bright","post-content");
-           des.innerHTML = cocktails.strIngredient1 + " " + cocktails.strMeasure1 + " <br> " + cocktails.strIngredient2 + " " + cocktails.strMeasure2 + " <br> " + cocktails.strIngredient3 + " " + cocktails.strMeasure3 + " <br> " + cocktails.strIngredient4 + " " + cocktails.strMeasure4 + " <br> " + cocktails.strIngredient5 + "  " + cocktails.strMeasure5 + " <br> ";
+           des.classList.add("xsmall", "bright","post-content"); 
+		   for (i = 0; i < cocktails.ingredients.length; i++) {
+		   var mixins = cocktails.ingredients[i]; 
+           des.innerHTML +=  mixins.ingredient +"<br>";
+		   }
            top.appendChild(des);
            
            var str = document.createElement("p");
            str.classList.add("xsmall", "bright","inst");
-           str.innerHTML = "<br>"+cocktails.strInstructions;
-           top.appendChild(str); 
-           
+           str.innerHTML = "<br>"+cocktails.instruction;
+           top.appendChild(str);  
 
-           wrapper.appendChild(top);
-       
+           wrapper.appendChild(top); 
            
            return wrapper;
 
