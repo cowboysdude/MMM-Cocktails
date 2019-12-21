@@ -2,6 +2,7 @@
     margin: 5px 5px 0 0;  
     border: 1px solid #333;
     overflow: auto;
+	max-width: 100%;
 }
 .MMM-Cocktails .post-thumb {
     float: left;
@@ -15,11 +16,19 @@
     height: 100px;
 }
 .MMM-Cocktails .post-content {
-    margin-left: 89px;
+	margin-right: 5px;
+	margin-left: 5px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;	
+	column-count: 2;
+	column-gap: .2em;
 }
 .MMM-Cocktails .post-title {
+	line-height: 96%;
+	color: #000;
     font-weight: bold;
-    font-size: 75%;
+    font-size: 55%;
     padding: 9px;
     background: #f2f2f2
 } 
