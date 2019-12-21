@@ -7,15 +7,15 @@ Works by default with Hello-Lucy voice enhancement!
 
 maxWidth: 400px, colored title text. Good for left and right regions.
 
-![](pic.JPG)
+![](1.PNG)
 
 maxWidth: 1050px, colored title text. Increased text sizes. top/bottom_bar, upper/lower_third, middle_center.
 
-![](stretch.JPG)
+![](2.PNG) 
+![](3.PNG)
+![](4.PNG) 
+![](5.PNG)
 
-No picture, colored title and body text. Placed under the compliments module as an example. Make it yours!
-
-![](nopic.jpg)
 
 ## Info
 
